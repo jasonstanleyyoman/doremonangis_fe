@@ -11,7 +11,7 @@ jobs:
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: jasonstanleyyoman/doremonangis_fe/currency_api
+        name: jasonstanleyyoman/doremonangis_fe/doremonangis_frontend
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         registry: docker.pkg.github.com
