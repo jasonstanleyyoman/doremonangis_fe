@@ -1,14 +1,12 @@
+import Vue from "vue";
 import Vuex from "vuex";
-
+import StoreModule from "./store";
+import DorayakiModule from "./dorayaki";
+Vue.use(Vuex);
 const store = new Vuex.Store({
-  state: {
-    count : 0
+  modules: {
+    store: StoreModule,
+    dorayaki: DorayakiModule,
   },
-  mutations: {
-    increment (state) {
-      state.count++
-    }
-  }
-})
-
+});
 export default store;

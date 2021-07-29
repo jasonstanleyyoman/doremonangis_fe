@@ -1,0 +1,107 @@
+const mockStores = [
+  {
+    ID: 3,
+    CreatedAt: "2021-07-24T10:36:49.049+07:00",
+    UpdatedAt: "2021-07-24T10:36:49.049+07:00",
+    DeletedAt: null,
+    Name: "Toko 1",
+    Address: "Jalan biasa",
+    Kecamatan: "kecamatan biasa",
+    Province: "provinsi biasa",
+    Dorayakis: [
+      {
+        ID: 3,
+        CreatedAt: "2021-07-24T16:49:53.704+07:00",
+        UpdatedAt: "2021-07-24T16:49:53.704+07:00",
+        DeletedAt: null,
+        Flavor: "storeberi2",
+        Description: "Deskripsi",
+        ImagePath: "/",
+        Stores: null,
+      },
+    ],
+    DorayakisAmount: [
+      {
+        ID: 3,
+        CreatedAt: "2021-07-24T16:49:53.704+07:00",
+        UpdatedAt: "2021-07-24T16:49:53.704+07:00",
+        DeletedAt: null,
+        Flavor: "storeberi2",
+        Description: "Deskripsi",
+        ImagePath: "/",
+        Stores: null,
+        Amount: 10,
+      },
+    ],
+  },
+  {
+    ID: 4,
+    CreatedAt: "2021-07-24T16:51:16.483+07:00",
+    UpdatedAt: "2021-07-24T16:51:16.483+07:00",
+    DeletedAt: null,
+    Name: "Toko2",
+    Address: "Alamat 2",
+    Kecamatan: "kecamatan 2",
+    Province: "Province 2",
+    Dorayakis: [
+      {
+        ID: 4,
+        CreatedAt: "2021-07-24T16:49:57.068+07:00",
+        UpdatedAt: "2021-07-24T16:49:57.068+07:00",
+        DeletedAt: null,
+        Flavor: "storeberi3",
+        Description: "Deskripsi",
+        ImagePath: "/",
+        Stores: null,
+      },
+    ],
+    DorayakisAmount: [
+      {
+        ID: 4,
+        CreatedAt: "2021-07-24T16:49:57.068+07:00",
+        UpdatedAt: "2021-07-24T16:49:57.068+07:00",
+        DeletedAt: null,
+        Flavor: "storeberi3",
+        Description: "Deskripsi",
+        ImagePath: "/",
+        Stores: null,
+        Amount: 12,
+      },
+    ],
+  },
+];
+
+const mockDorayaki = [
+  {
+    ID: 2,
+    CreatedAt: "2021-07-24T16:49:49.959+07:00",
+    UpdatedAt: "2021-07-24T16:49:49.959+07:00",
+    DeletedAt: null,
+    Flavor: "storeberi",
+    Description: "Deskripsi",
+    ImagePath: "/",
+    Stores: null,
+  },
+  {
+    ID: 3,
+    CreatedAt: "2021-07-24T16:49:53.704+07:00",
+    UpdatedAt: "2021-07-24T16:49:53.704+07:00",
+    DeletedAt: null,
+    Flavor: "storeberi2",
+    Description: "Deskripsi",
+    ImagePath: "/",
+    Stores: null,
+  },
+  {
+    ID: 4,
+    CreatedAt: "2021-07-24T16:49:57.068+07:00",
+    UpdatedAt: "2021-07-24T16:49:57.068+07:00",
+    DeletedAt: null,
+    Flavor: "storeberi3",
+    Description: "Deskripsi",
+    ImagePath: "/",
+    Stores: null,
+  },
+];
+
+export { mockStores, mockDorayaki };

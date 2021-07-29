@@ -1,64 +1,88 @@
 <template>
-<div class="sidebar">
-  <p class="title">Dorayaki</p>
-  <sidebar-button @click="toggleModal">
-    <template v-slot:icon>
-      <img src="../assets/dorayaki.png"/>
-    </template>
-    Hello
-  </sidebar-button>
-  <sidebar-button @click="toggleModal">
-    <template v-slot:icon>
-      <img src="../assets/dorayaki.png"/>
-    </template>
-    Hello
-  </sidebar-button>
+  <div class="sidebar">
+    <p class="title">Dorayaki</p>
 
-  <sidebar-button @click="toggleAddModal">
-    <template v-slot:icon>
-      <v-icon name="plus"></v-icon>
-    </template>
-    Add dorayaki
-  </sidebar-button>
+    <sidebar-button
+      v-for="(dorayaki, idx) in dorayakis"
+      :key="dorayaki.ID"
+      @click="toggleModal(idx)"
+    >
+      <template v-slot:icon>
+        <img :src="dorayaki.ImagePath" />
+      </template>
+      {{ dorayaki.Flavor }}
+    </sidebar-button>
 
-  <modal v-if="open" @close="open = false">
-    <div class="modal">
-      <img src="../assets/dorayaki.png"/>
-      <h4>Description</h4>
-    </div>
-  </modal>
-  <add-dorayaki-modal v-if="isAddModalOpen" @close="isAddModalOpen = false">
+    <sidebar-button @click="toggleAddModal">
+      <template v-slot:icon>
+        <v-icon name="plus"></v-icon>
+      </template>
+      Add dorayaki
+    </sidebar-button>
 
-  </add-dorayaki-modal>
-</div>
+    <modal v-if="open" @close="open = false">
+      <div class="modal">
+        <img :src="shownDorayaki.ImagePath" />
+        <h4>{{ shownDorayaki.Flavor }}</h4>
+        <sui-button color="red" inverted @click="delDorayaki"
+          >Delete</sui-button
+        >
+      </div>
+    </modal>
+    <add-dorayaki-modal v-if="isAddModalOpen" @close="isAddModalOpen = false">
+    </add-dorayaki-modal>
+  </div>
 </template>
 
 <script>
-import SidebarButton from "./SidebarButton.vue"
+import SidebarButton from "./SidebarButton.vue";
 import Modal from "./Modal.vue";
 import AddDorayakiModal from "./AddDorayakiModal.vue";
+import { mapState, mapActions } from "vuex";
 export default {
   name: "Sidebar",
   components: {
     SidebarButton,
     Modal,
-    AddDorayakiModal
+    AddDorayakiModal,
   },
   data: function() {
     return {
       open: false,
-      isAddModalOpen: false
-    }
+      isAddModalOpen: false,
+      shownDorayakiIndex: 0,
+    };
   },
   methods: {
-    toggleModal() {
+    toggleModal(idx) {
+      this.shownDorayakiIndex = idx;
       this.open = !this.open;
     },
     toggleAddModal() {
       this.isAddModalOpen = !this.isAddModalOpen;
-    }
-  }
-}
+    },
+    delDorayaki() {
+      this.deleteDorayaki(this.dorayakis[this.shownDorayakiIndex].ID).then(
+        () => (this.open = false)
+      );
+    },
+    ...mapActions("dorayaki/", ["updateDorayakis", "deleteDorayaki"]),
+  },
+  computed: {
+    ...mapState("dorayaki/", {
+      dorayakis: (state) => state.dorayakis,
+    }),
+
+    shownDorayaki: function() {
+      return this.dorayakis[this.shownDorayakiIndex];
+    },
+  },
+
+  mounted() {
+    this.updateDorayakis();
+    console.log(this.dorayakis);
+  },
+};
 </script>
 
 <style scoped>
@@ -97,7 +121,5 @@ export default {
   object-fit: contain;
   border-radius: 50%;
   background-color: rgb(224, 224, 224);
-  
 }
-
 </style>

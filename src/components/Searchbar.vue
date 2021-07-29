@@ -1,14 +1,18 @@
 <template>
   <div class="searchbar">
-    <input placeholder="Search . . . . . "/>
+    <input
+      placeholder="Search . . . . . "
+      :value="value"
+      @input="$emit('input', $event.target.value)"
+    />
     <v-icon name="search"></v-icon>
   </div>
 </template>
 
 <script>
 export default {
-
-}
+  props: ["value"],
+};
 </script>
 
 <style scoped>

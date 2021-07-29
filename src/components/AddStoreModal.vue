@@ -1,23 +1,23 @@
 <template>
   <modal @close="$emit('close')">
     <div class="modal">
-      <sui-form>
+      <sui-form @submit.prevent="submitForm">
         <sui-header dividing>Store Information</sui-header>
         <sui-form-field>
           <label>Store Name</label>
-          <input placeholder="First Name" />
+          <input v-model="name" />
         </sui-form-field>
         <sui-form-field>
           <label>Address</label>
-          <input placeholder="Last Name" />
+          <input v-model="address" />
         </sui-form-field>
         <sui-form-field>
           <label>Kecamatan</label>
-          <input placeholder="Last Name" />
+          <input v-model="kecamatan" />
         </sui-form-field>
         <sui-form-field>
           <label>Provinsi</label>
-          <input placeholder="Last Name" />
+          <input v-model="province" />
         </sui-form-field>
         <sui-button type="submit">Submit</sui-button>
       </sui-form>
@@ -26,14 +26,44 @@
 </template>
 
 <script>
-import Modal from "./Modal.vue"
+import Modal from "./Modal.vue";
+import { mapActions } from "vuex";
 export default {
   name: "AddStoreModal",
   emits: ["close"],
+  data: function() {
+    return {
+      name: "",
+      address: "",
+      kecamatan: "",
+      province: "",
+    };
+  },
+  methods: {
+    submitForm() {
+      if (
+        this.name.length === 0 ||
+        this.address.length === 0 ||
+        this.kecamatan.length === 0 ||
+        this.province.length === 0
+      ) {
+        this.$toasted.error("Please fill all field");
+        return;
+      }
+      const data = {
+        name: this.name,
+        address: this.address,
+        kecamatan: this.kecamatan,
+        province: this.province,
+      };
+      this.addStore(data).then(() => this.$emit("close"));
+    },
+    ...mapActions("store/", ["addStore"]),
+  },
   components: {
-    Modal
-  }
-}
+    Modal,
+  },
+};
 </script>
 
 <style>

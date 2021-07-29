@@ -7,8 +7,8 @@
 <script>
 export default {
   name: "StoreCard",
-  emits: ["click"]
-}
+  emits: ["click"],
+};
 </script>
 
 <style scoped>
@@ -30,6 +30,10 @@ export default {
   text-align: center;
 }
 
+.store-card p {
+  margin-top: 16px;
+}
+
 .store-card img {
   width: 120px;
   height: 120px;
@@ -43,5 +47,4 @@ export default {
   transform: translateY(-4px);
   box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.3);
 }
-
 </style>
