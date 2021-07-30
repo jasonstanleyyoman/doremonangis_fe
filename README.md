@@ -1,24 +1,17 @@
-# doremonangis_fe
+# Backend repository for Doremonangis
 
-## Project setup
-```
-npm install
-```
+## Author
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Jason Stanley Yoman (NIM : 13519019)
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## How to run
 
-### Lints and fixes files
-```
-npm run lint
-```
+Requirement:
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- `docker`
+
+Execute this command after requirement is installed properly
+
+```sh
+docker-compuse up -d
+```
